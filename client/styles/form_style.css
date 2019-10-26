@@ -2,8 +2,14 @@
     box-sizing: border-box
 }
 
+@media screen and (min-width: 800px) {
+    form {
+        padding: 0 35% 10%;
+    }
+}
+
 form {
-    padding: 0 35% 10%;
+    align-content: center;
 }
 
 label {
@@ -13,11 +19,17 @@ label {
 input[type=text], input[type=password], input[type=email] {
     width: 100%;
     padding: 15px;
-    margin: 5px 0 22px 0;
+    margin: 3% 0%;
     display: inline-block;
     border: none;
+    font-size: 16px;
     background: #f1f1f1;
     font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
 }
 
 input[type=text]:focus, input[type=password]:focus {
@@ -45,6 +57,7 @@ h1 {
 }
 
 fieldset {
+    margin-top: 3%;
     padding: 20px;
     background: transparent;
     font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
