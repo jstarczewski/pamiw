@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    REGISTER FOR WORST WEB DEVELOPERS SUMMIT 2019
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" href="styles/form_style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<h1>
+    Worst Web Developers summit 2019
+</h1>
 <form>
     <ul style="list-style-type: none">
         <li>
@@ -15,23 +18,23 @@
         </li>
         <li>
             <label for="password"><b>Password</b></label>
-            <input id="password" type="text" name="password" placeholder="Enter password" required>
+            <input id="password" type="password" name="password" placeholder="Enter password" required>
         </li>
         <li>
             <label for="repeat_password"><b>Repeat password</b></label>
-            <input id="repeat_password" type="text" name="repeat_password" placeholder="Repeat password" required>
+            <input id="repeat_password" type="password" name="repeat_password" placeholder="Repeat password" required>
         </li>
         <li>
             <label for="name">Name</label>
-            <input id="name" type="text" name="name" required>
+            <input id="name" type="text" placeholder="ex. Jan" name="name" required>
         </li>
         <li>
             <label for="surname">Surname</label>
-            <input id="surname" type="text" name="surname" required>
+            <input id="surname" type="text" placeholder="ex. Kowalski" name="surname" required>
         </li>
         <li>
             <label for="email">Email</label>
-            <input id="email" type="email" name="email" required>
+            <input id="email" type="email" placeholder="ex. jan.kowalski@pw.edu.pl" name="email" required>
         <li>
             <fieldset>
                 <legend>Gender</legend>
@@ -42,7 +45,7 @@
             </fieldset>
         </li>
         <li>
-            <input type="submit" value="Register">
+            <input class="register_button" type="submit" value="Register">
         </li>
     </ul>
 </form>

@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box
+}
+
+form {
+    padding: 0 35% 10%;
+}
+
+label {
+    font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+    font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+
+h1 {
+    padding-top: 5px;
+    text-align: center;
+    padding-bottom: 0;
+    font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+
+.register_button {
+    background-color: #4dd0e1;
+    color: white;
+    margin-top: 5%;
+    padding: 5%;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+fieldset {
+    padding: 20px;
+    background: transparent;
+    font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+    border-color: #4dd0e1;
+    text-align: center;
+}
+
+.register_button:hover {
+    opacity: 1;
+}
