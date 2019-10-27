@@ -9,7 +9,7 @@
 <body>
 <h1>Worst Web Developers summit 2019</h1>
 <form>
-    <ul style="list-style-type: none">
+    <ul id="list" style="list-style-type: none" class="errorMessages">
         <li>
             <label>
                 <input id="firstname" type="text" name="firstname" placeholder="First name" required autofocus>
@@ -22,13 +22,17 @@
         <li>
         <li>
             <label>
-                <input id="password" type="password" name="password" placeholder="Password" required>
+                <input id="password" type="password" minlength="8" name="password" placeholder="Password"
+                       onkeyup="checkPasswordsEquality()"
+                       required/>
             </label>
         </li>
         <li>
-            <label>
-                <input id="confirm_password" type="password" name="confirm_password" placeholder="Confirm Password"
-                       required>
+            <label id="confirm_password_label">
+                <input id="confirm_password" type="password" minlength="8" name="confirm_password"
+                       placeholder="Confirm Password"
+                       onkeyup="checkPasswordsEquality()"
+                       required/>
             </label>
         </li>
         <li>
@@ -44,7 +48,8 @@
         </li>
         <li>
             <label>
-                <input id="pesel" type="number" minlength="11" maxlength="11" placeholder="PESEL" name="name" required>
+                <input id="pesel" type="text" size="11" minlength="11" placeholder="PESEL [0-9]" name="pesel"
+                       pattern="[0-9]{11}" required>
             </label>
         </li>
         <li>
@@ -62,9 +67,11 @@
             </label>
         </li>
         <li>
-            <input class="register_button" type="submit" value="Register">
+            <input id="submit" class="register_button" type="submit" onsubmit="createAllErrors()"
+                   value="Register">
         </li>
     </ul>
 </form>
+<script type="text/javascript" src="scripts/main.js"></script>
 </body>
 </html>

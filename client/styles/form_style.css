@@ -79,7 +79,15 @@ input[type=file] {
     text-align: right;
     align-content: center;
     font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
 
+.different_passwords_span {
+    text-align: center;
+    font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+    color: red;
+    width: 100%;
+    display: block;
+    alignment: center;
 }
 
 .register_button {
