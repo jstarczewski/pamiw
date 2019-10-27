@@ -81,7 +81,7 @@ input[type=file] {
     font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 }
 
-.different_passwords_span {
+.error_span {
     text-align: center;
     font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
     color: red;

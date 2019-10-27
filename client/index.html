@@ -8,16 +8,22 @@
 </head>
 <body>
 <h1>Worst Web Developers summit 2019</h1>
-<form>
+<form id="form">
     <ul id="list" style="list-style-type: none" class="errorMessages">
         <li>
-            <label>
-                <input id="firstname" type="text" name="firstname" placeholder="First name" required autofocus>
+            <label id="firstname_label">
+                <input id="firstname" type="text" name="firstname" placeholder="First name"
+                       pattern="[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻżXxQq]+"
+                       onkeyup="validateNameCorrectness()"
+                       required autofocus>
             </label>
         </li>
         <li>
-            <label>
-                <input id="lastname" type="text" placeholder="Last name" name="lastname" required>
+            <label id="lastname_label">
+                <input id="lastname" type="text" placeholder="Last name" name="lastname"
+                       pattern="[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻżXxQq]+"
+                       onkeyup="validateLastNameCorrectness()"
+                       required>
             </label>
         <li>
         <li>
@@ -38,6 +44,7 @@
         <li>
             <label for="birthdate">
                 <input type="date" name="birthdate" placeholder="Date of birth" id="birthdate" min="1900-01-01"
+                       onkeyup="validateDate()"
                        required>
             </label>
         </li>
@@ -67,11 +74,14 @@
             </label>
         </li>
         <li>
-            <input id="submit" class="register_button" type="submit" onsubmit="createAllErrors()"
+            <input id="submit" class="register_button"
+                   type="submit" onsubmit="createAllErrors()"
+                   onmouseover="checkSubmitButtonAvailability()"
                    value="Register">
         </li>
     </ul>
 </form>
-<script type="text/javascript" src="scripts/main.js"></script>
+<script onload="setup()" type="text/javascript" src="scripts/password_validation.js"></script>
+<script onload="setMaxDate()" type="text/javascript" src="scripts/birthdate_validation.js"></script>
 </body>
 </html>
