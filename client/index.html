@@ -7,16 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<h1>
-    Worst Web Developers summit 2019
-</h1>
+<h1>Worst Web Developers summit 2019</h1>
 <form>
     <ul style="list-style-type: none">
         <li>
             <label>
-                <input id="login" type="text" name="login" placeholder="Login" required autofocus>
+                <input id="firstname" type="text" name="firstname" placeholder="First name" required autofocus>
             </label>
         </li>
+        <li>
+            <label>
+                <input id="lastname" type="text" placeholder="Last name" name="lastname" required>
+            </label>
+        <li>
         <li>
             <label>
                 <input id="password" type="password" name="password" placeholder="Password" required>
@@ -29,27 +32,34 @@
             </label>
         </li>
         <li>
-            <label>
-                <input id="name" type="text" placeholder="Name" name="name" required>
+            <label for="birthdate">
+                <input type="date" name="birthdate" placeholder="Date of birth" id="birthdate" min="1900-01-01"
+                       required>
             </label>
         </li>
         <li>
             <label>
-                <input id="surname" type="text" placeholder="Surname" name="surname" required>
+                <input id="login" type="text" placeholder="Login" name="login" required>
             </label>
         </li>
         <li>
             <label>
-                <input id="email" type="email" placeholder="Email" name="email" required>
+                <input id="pesel" type="number" minlength="11" maxlength="11" placeholder="PESEL" name="name" required>
             </label>
+        </li>
         <li>
             <fieldset>
-                <legend>Gender</legend>
+                <legend>SEX</legend>
                 <label for="male">Male</label>
-                <input id="male" type="radio" name="gender" value="m" required checked>
+                <input id="male" type="radio" name="sex" value="m" required checked>
                 <label for="female">Female</label>
-                <input id="female" type="radio" name="gender" value="f" required>
+                <input id="female" type="radio" name="sex" value="f" required>
             </fieldset>
+        </li>
+        <li>
+            <label for="photo">
+                <input type="file" name="photo" id="photo" required>
+            </label>
         </li>
         <li>
             <input class="register_button" type="submit" value="Register">
