@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
-    <link rel="stylesheet" href="styles/form_style.css">
+    <link rel="stylesheet" href="../static/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <h1>Worst Web Developers summit 2019</h1>
-<form id="form" action="http://localhost:5000/register" method="POST" enctype="multipart/form-data">
+<form id="form" action="/register" method="POST" enctype="multipart/form-data">
     <ul id="list" style="list-style-type: none" class="errorMessages">
         <li>
             <label id="firstname_label">
@@ -22,7 +22,7 @@
         <li>
             <label id="lastname_label">
                 <input id="lastname" type="text" placeholder="Last name" name="lastname"
-                       pattern="[A-Za-z\p{L}]"
+                       pattern="[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻżXxQq]+"
                        onkeyup="checkLastNameCorrectness()"
                        autocomplete="off"
                        required>
@@ -92,6 +92,6 @@
         </li>
     </ul>
 </form>
-<script onload="init()" type="text/javascript" src="scripts/register.js"></script>
+<script onload="init()" type="text/javascript" src="../static/register.js"></script>
 </body>
 </html>

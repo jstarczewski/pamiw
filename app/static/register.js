@@ -189,7 +189,7 @@ function checkLogin() {
 }
 
 function checkUser(userName) {
-    let url = 'http://localhost:5000/user/' + userName;
+    let url = '/user/' + userName;
     let request = new XMLHttpRequest();
     const submitButton = document.getElementById(submitId);
     request.open('GET', url);

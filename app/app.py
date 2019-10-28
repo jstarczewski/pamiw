@@ -5,11 +5,9 @@ from flask import make_response
 from flask import render_template
 from flask import url_for
 from datetime import datetime as dt
-from flask_cors import CORS
 
 users = {}
 app = Flask(__name__)
-CORS(app)
 
 
 @app.route('/user/<username>', methods=['GET', 'OPTIONS', 'HEAD'])
@@ -75,14 +73,15 @@ def valid(field, value):
         except ValueError:
             return False
     if field == 'login':
-        return re.compile('[a-z]{3,12}').match(value)
+        return True
     if field == 'pesel':
         if len(value) != 11:
             return False
-        wk, w = 0, [1, 3, 7, 9]
+        wk, w = 0, [9, 7, 3, 1]
         for i in range(10):
-            wk = (wk + int(value[i]) * w[i % 4]) % 10
-        k = (10 - wk) % 10
+            wk += int(value[i]) * w[i % 4]
+        k = wk % 10
+        print(k)
         return int(value[10]) == k
     if field == 'sex':
         return value in ('M', 'F')
