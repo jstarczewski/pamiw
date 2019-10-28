@@ -5,9 +5,11 @@ from flask import make_response
 from flask import render_template
 from flask import url_for
 from datetime import datetime as dt
+from flask_cors import CORS
 
 users = {}
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/user/<username>', methods=['GET', 'OPTIONS', 'HEAD'])
