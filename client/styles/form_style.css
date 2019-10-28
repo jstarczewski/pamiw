@@ -95,6 +95,7 @@ input[type=file] {
     font-size: 16px;
     color: white;
     margin-top: 5%;
+    margin-bottom: 5%;
     padding: 5%;
     border: none;
     cursor: pointer;
