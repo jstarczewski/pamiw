@@ -7,47 +7,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<h1>
-    Worst Web Developers summit 2019
-</h1>
-<form>
-    <ul style="list-style-type: none">
+<h1>Worst Web Developers summit 2019</h1>
+<form id="form" action="http://localhost:5000/register" method="POST" enctype="multipart/form-data">
+    <ul id="list" style="list-style-type: none" class="errorMessages">
         <li>
-            <label for="login"><b>Login</b></label>
-            <input id="login" type="text" name="login" placeholder="Login" required autofocus>
+            <label id="firstname_label">
+                <input id="firstname" type="text" name="firstname" placeholder="First name"
+                       pattern="[AaĄąBbCcĆćDdEeĘęFfGgHhIiJjKkLlŁłMmNnŃńOoÓóPpRrSsŚśTtUuWwYyZzŹźŻżXxQq]+"
+                       onkeyup="checkNameCorrectness()"
+                       autocomplete="off"
+                       required autofocus>
+            </label>
         </li>
         <li>
-            <label for="password"><b>Password</b></label>
-            <input id="password" type="password" name="password" placeholder="Enter password" required>
+            <label id="lastname_label">
+                <input id="lastname" type="text" placeholder="Last name" name="lastname"
+                       pattern="[A-Za-z\p{L}]"
+                       onkeyup="checkLastNameCorrectness()"
+                       autocomplete="off"
+                       required>
+            </label>
+        <li>
+        <li>
+            <label id="password_label">
+                <input id="password" type="password" minlength="8" name="password" placeholder="Password"
+                       onkeyup="checkPasswordsEquality()"
+                       pattern="[a-z]+"
+                       autocomplete="off"
+                       required/>
+            </label>
         </li>
         <li>
-            <label for="repeat_password"><b>Repeat password</b></label>
-            <input id="repeat_password" type="password" name="repeat_password" placeholder="Repeat password" required>
+            <label id="confirm_password_label">
+                <input id="confirm_password" type="password" minlength="8" name="confirm_password"
+                       placeholder="Confirm Password"
+                       onkeyup="checkPasswordsEquality()"
+                       autocomplete="off"
+                       required/>
+            </label>
         </li>
         <li>
-            <label for="name">Name</label>
-            <input id="name" type="text" placeholder="ex. Jan" name="name" required>
+            <label id="date_label" for="birthdate">
+                <input type="date" name="birthdate" placeholder="Date of birth" id="birthdate" min="1900-01-01"
+                       onkeyup="checkDate()"
+                       autocomplete="off"
+                       required>
+            </label>
         </li>
         <li>
-            <label for="surname">Surname</label>
-            <input id="surname" type="text" placeholder="ex. Kowalski" name="surname" required>
+            <label id="login_label">
+                <input id="login" type="text" min="3" max="12" pattern="[a-z]+" placeholder="Login" name="login"
+                       onkeyup="checkLogin()"
+                       autocomplete="off"
+                       required>
+            </label>
         </li>
         <li>
-            <label for="email">Email</label>
-            <input id="email" type="email" placeholder="ex. jan.kowalski@pw.edu.pl" name="email" required>
+            <label id="pesel_label">
+                <input id="pesel" type="text" size="11" minlength="11" placeholder="PESEL [0-9]" name="pesel"
+                       autocomplete="off"
+                       pattern="[0-9]{11}" onkeyup="checkPesel()" required>
+            </label>
+        </li>
         <li>
             <fieldset>
-                <legend>Gender</legend>
+                <legend>SEX</legend>
                 <label for="male">Male</label>
-                <input id="male" type="radio" name="gender" value="m" required checked>
+                <input id="male" type="radio" name="sex" value="M" required checked>
                 <label for="female">Female</label>
-                <input id="female" type="radio" name="gender" value="f" required>
+                <input id="female" type="radio" name="sex" value="F" required>
             </fieldset>
         </li>
         <li>
-            <input class="register_button" type="submit" value="Register">
+            <label id="file_label" for="photo">
+                <input type="file" name="photo" onchange="checkPhoto()" id="photo" required>
+            </label>
+        </li>
+        <li>
+            <label id="submit_label">
+                <input id="submit" class="register_button"
+                       type="submit"
+                       value="Register">
+            </label>
         </li>
     </ul>
 </form>
+<script onload="init()" type="text/javascript" src="scripts/register.js"></script>
 </body>
 </html>

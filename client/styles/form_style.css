@@ -2,22 +2,59 @@
     box-sizing: border-box
 }
 
+@media screen and (min-width: 800px) {
+    form {
+        padding: 0 35% 10%;
+    }
+}
+
 form {
-    padding: 0 35% 10%;
+    align-content: center;
 }
 
 label {
     font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 }
 
-input[type=text], input[type=password], input[type=email] {
+input[type=text],
+input[type=password],
+input[type=number] {
     width: 100%;
     padding: 15px;
-    margin: 5px 0 22px 0;
+    margin: 3% 0;
     display: inline-block;
     border: none;
+    font-size: 16px;
     background: #f1f1f1;
     font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+
+input[type=date] {
+    width: 100%;
+    padding: 15px;
+    margin: 3% 0;
+    display: inline-block;
+    color: gray;
+    border: none;
+    font-size: 16px;
+    background: #f1f1f1;
+    font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+
+input[type=date]:before {
+    content: attr(placeholder) !important;
+    color: gray;
+    margin-right: 0.5em;
+}
+
+input[type=date]:focus:before,
+input[type=date]:valid:before {
+    content: attr(placeholder);
+}
+
+ul {
+    padding: 0;
+    margin: 0;
 }
 
 input[type=text]:focus, input[type=password]:focus {
@@ -33,10 +70,32 @@ h1 {
     font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 }
 
+input[type=file] {
+    outline: none;
+    alignment: center;
+    padding: 5%;
+    width: 100%;
+    display: block;
+    text-align: right;
+    align-content: center;
+    font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+
+.error_span {
+    text-align: center;
+    font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+    color: red;
+    width: 100%;
+    display: block;
+    alignment: center;
+}
+
 .register_button {
     background-color: #4dd0e1;
+    font-size: 16px;
     color: white;
     margin-top: 5%;
+    margin-bottom: 5%;
     padding: 5%;
     border: none;
     cursor: pointer;
@@ -45,6 +104,7 @@ h1 {
 }
 
 fieldset {
+    margin-top: 3%;
     padding: 20px;
     background: transparent;
     font-family: "Lucinda Grande", "Lucinda Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
