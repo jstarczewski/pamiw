@@ -2,13 +2,13 @@ const confirmPasswordLabelId = 'confirm_password_label';
 const spanElement = 'span';
 const differentPasswordErrorTextSpanId = 'error_span';
 const errorSpanClassName = 'error_span';
-const differentPasswordErrorText = 'Passwords are not equal or are too short';
+const differentPasswordErrorText = 'Passwords do not match constraints';
 const passwordId = 'password';
 const passwordConfirmationId = 'confirm_password';
 const submitId = 'submit';
 const nameId = 'firstname';
 const nameLabelId = 'firstname_label';
-const charactersErrorText = 'Invalid characters';
+const charactersErrorText = 'Invalid characters in input field';
 const notValidNameSpanId = 'name_error_span';
 const pesel = 'pesel';
 const loginId = 'login';
@@ -16,7 +16,6 @@ const birthdateId = 'birthdate';
 const dateSeparator = 'T';
 const emptyErrorText = 'Field cannot be empty';
 const formId = 'form';
-
 
 function init() {
     const submitButton = document.getElementById(submitId);
