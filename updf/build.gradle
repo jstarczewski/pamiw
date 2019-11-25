@@ -22,11 +22,16 @@ sourceSets {
     test.resources.srcDirs = ['testresources']
 }
 
+
 repositories {
     mavenLocal()
     jcenter()
     maven { url 'https://kotlin.bintray.com/ktor' }
 }
+
+sourceCompatibility = 1.8
+compileKotlin { kotlinOptions.jvmTarget = "1.8" }
+compileTestKotlin { kotlinOptions.jvmTarget = "1.8" }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
@@ -36,5 +41,14 @@ dependencies {
     compile "io.ktor:ktor-client-core-jvm:$ktor_version"
     compile "io.ktor:ktor-client-apache:$ktor_version"
     implementation "io.ktor:ktor-auth-jwt:$ktor_version"
+    implementation "org.kodein.di:kodein-di-earsed-jvm:6.3.4"
+    implementation "org.kodein.di:kodein-di-framework-ktor-server-jvm:6.3.4"
+    implementation "io.ktor:ktor-jackson:$ktor_version"
+    implementation "io.ktor:ktor-locations:$ktor_version"
+    implementation "io.ktor:ktor-gson:$ktor_version"
+    compile "io.ktor:ktor-jackson:$ktor_version"
+    compile 'io.vertx:vertx-redis-client:3.8.3'
+    implementation "com.google.code.gson:gson:2.7"
+    implementation "org.ehcache:ehcache:3.0.0.m4"
     testCompile "io.ktor:ktor-server-tests:$ktor_version"
 }
