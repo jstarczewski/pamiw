@@ -51,4 +51,5 @@ dependencies {
     implementation "com.google.code.gson:gson:2.7"
     implementation "org.ehcache:ehcache:3.0.0.m4"
     testCompile "io.ktor:ktor-server-tests:$ktor_version"
+    compile "io.ktor:ktor-html-builder:$ktor_version"
 }
