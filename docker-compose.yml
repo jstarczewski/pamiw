@@ -1,0 +1,16 @@
+version: "3"
+services:
+    updf:
+        build:
+            context: ./updf
+            dockerfile: ./Dockerfile
+        ports:
+            - 8080:8080
+    log:
+        build:
+            context: ./log
+            dockerfile: ./Dockerfile
+        ports:
+            - 8081:8081
+        links:
+            - updf
