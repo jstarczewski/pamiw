@@ -1,12 +1,10 @@
 package com.jstarczewski.updf.db
 
-import java.io.File
-
 interface PdfDataSource {
 
-    fun getPdfById(id: Long) : Pdf?
+    fun getPdfById(id: Long): Pdf?
 
-    fun savePdf(userName: String, title: String, file: File): Long
+    fun savePdf(userName: String, title: String): Long
 
     fun getAllPdfFiles(): Sequence<Pdf>
 }

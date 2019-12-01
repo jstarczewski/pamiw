@@ -1,4 +1,4 @@
-package com.jstarczewski.updf
+package com.jstarczewski.updf.util
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
