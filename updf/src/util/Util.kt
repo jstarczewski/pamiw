@@ -7,7 +7,6 @@ import kotlinx.coroutines.yield
 import java.io.File
 import java.io.InputStream
 import java.io.OutputStream
-import java.lang.Exception
 
 fun <T> tryOrNull(block: () -> T): T? {
     return try {
@@ -16,6 +15,25 @@ fun <T> tryOrNull(block: () -> T): T? {
         null
     }
 }
+
+fun runWhenElementIsNull(block: () -> Unit, vararg parameters: String?) {
+    if (parameters.size != parameters.filterNotNull().size)
+        block()
+}
+
+fun Any.asHttpParameter() = "/$this"
+
+fun String.toLongList() = tryOrNull {
+    split(',').toLongList()
+}
+
+fun List<String>.toLongList() =
+    tryOrNull {
+        this.map {
+            it.toLong()
+        }
+    }
+
 
 private const val extensionType = "idx"
 
