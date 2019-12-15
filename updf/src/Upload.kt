@@ -1,6 +1,6 @@
 package com.jstarczewski.updf
 
-import com.jstarczewski.updf.db.PdfDataSource
+import com.jstarczewski.updf.db.pdf.PdfDataSource
 import com.jstarczewski.updf.util.copyToSuspend
 import io.ktor.application.call
 import io.ktor.auth.authenticate
