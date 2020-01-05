@@ -1,5 +1,6 @@
 package com.jstarczewski.log.util
 
+import com.jstarczewski.log.cache.ResponseDataSource
 import com.jstarczewski.log.db.UserDatabase
 import io.ktor.config.ApplicationConfig
 import io.ktor.util.KtorExperimentalAPI
@@ -19,4 +20,6 @@ object Injection {
     }
 
     fun provideLocalDataSource() = UserDatabase()
+
+    fun provideResponseDataSource() = ResponseDataSource()
 }

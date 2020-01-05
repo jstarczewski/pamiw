@@ -27,25 +27,37 @@ import io.ktor.util.hex
 data class Login(val userId: String = "", val error: String = "")
 
 @Location("/")
-class Index()
+class Index
 
 @Location("/logout")
-class Logout()
+class Logout
 
 @Location("/user")
-class UserPage
+class UserPage(val error: String = "")
 
-@Location("user/{id}")
+@Location("/user/{id}")
 data class UserPdf(val id: Long)
 
-@Location("/hello")
-class Hello
-
 @Location("/user/upload")
-class UserUpload
+class UserUpload(val error: String = "")
 
 @Location("/styles/main.css")
 class MainCss
+
+@Location("/user/upload/pub")
+class UserUploadPub(val error: String = "")
+
+@Location("/user/pub/delete/{id}")
+class UserPublicationDelete(val id: Long)
+
+@Location("/user/pdf/delete/{id}")
+class DeletePdf(val id: Long)
+
+@Location("/user/pub/link/{id}")
+class LinkPublication(val id: Long)
+
+@Location("/user/pub/unlink/{id}")
+class UnlinkPublication(val id: Long)
 
 data class LogSession(val userId: String)
 
@@ -71,6 +83,7 @@ fun Application.module() {
     }
     val uploadDir = Injection.provideUploadDir(environment.config.config(UPLOAD_DIR_CONFIG_PATH))
     val datasource = Injection.provideLocalDataSource()
+    val responseDataSource = Injection.provideResponseDataSource()
 
     install(ConditionalHeaders)
     install(ContentNegotiation) {
@@ -92,8 +105,13 @@ fun Application.module() {
         styles()
         index(datasource)
         login(datasource)
-        userPage(datasource, client)
+        userPage(datasource, client, responseDataSource)
         userUpload(datasource, client, uploadDir)
+        userUploadPub(datasource, client)
+        userPublicationDelete(datasource, client, responseDataSource)
+        linkPublication(datasource, client, responseDataSource)
+        unlinkPublication(datasource, client, responseDataSource)
+        userPdfDelete(datasource, client, responseDataSource)
     }
 }
 

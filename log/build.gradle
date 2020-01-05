@@ -26,6 +26,7 @@ sourceSets {
     test.resources.srcDirs = ['testresources']
 }
 
+
 repositories {
     mavenLocal()
     jcenter()
