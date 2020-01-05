@@ -37,6 +37,9 @@ class Publications
 @Location("/pub/{id}")
 data class Publication(val id: Long)
 
+@Location("/pub/delete/{id}")
+data class PublicationDelete(val id: Long)
+
 @Location("/pub/{pubId}/link/{pdfId}")
 data class Link(val pubId: Long, val pdfId: Long)
 

@@ -1,5 +1,6 @@
 package com.jstarczewski.updf.responses
 
+import com.jstarczewski.updf.db.Pdf
 import com.jstarczewski.updf.db.Publication
 import com.jstarczewski.updf.util.asHttpParameter
 import java.io.Serializable
@@ -12,7 +13,7 @@ data class PublicationResponse(
     val delete: Action,
     val mount: Action,
     val unmount: Action,
-    val pdfs: List<PdfAction>?
+    val pdfs: List<PdfResponse>?
 ) : Serializable {
 
     companion object {
@@ -20,27 +21,18 @@ data class PublicationResponse(
         private const val PUB_BASE = "/pub"
         private const val LINK = "/link"
         private const val UNLINK = "/unlink"
-        private const val PARAM_INFO = "/{pdf_id_long}"
-        private const val PDF_BASE = "/pdf"
+        private const val EXPECT_PARAMETER = "/"
 
-        fun from(publication: Publication) =
+        fun from(publication: Publication, pdfs: List<Pdf>?) =
             PublicationResponse(
                 publication.id,
                 publication.author,
                 publication.title,
                 publication.description,
                 Action(PUB_BASE + publication.id.asHttpParameter(), Method.DELETE.name),
-                Action(PUB_BASE + publication.id.asHttpParameter() + LINK + PARAM_INFO, Method.POST.name),
-                Action(PUB_BASE + publication.id.asHttpParameter() + UNLINK + PARAM_INFO, Method.POST.name),
-                publication.pdfIds?.toPdfActions()
+                Action(PUB_BASE + publication.id.asHttpParameter() + LINK + EXPECT_PARAMETER, Method.POST.name),
+                Action(PUB_BASE + publication.id.asHttpParameter() + UNLINK + EXPECT_PARAMETER, Method.POST.name),
+                pdfs?.map { PdfResponse.from(it) }
             )
-
-        private fun List<Long>.toPdfActions() =
-            this.map {
-                PdfAction(
-                    Action(PDF_BASE + it.asHttpParameter(), Method.GET.name),
-                    Action(PDF_BASE + it.asHttpParameter(), Method.DELETE.name)
-                )
-            }
     }
 }

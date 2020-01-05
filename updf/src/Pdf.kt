@@ -3,6 +3,7 @@ package com.jstarczewski.updf
 import com.jstarczewski.updf.auth.User
 import com.jstarczewski.updf.db.pdf.PdfDataSource
 import com.jstarczewski.updf.db.pub.PublicationDataSource
+import com.jstarczewski.updf.responses.PdfResponse
 import io.ktor.application.call
 import io.ktor.auth.authenticate
 import io.ktor.auth.principal
@@ -40,21 +41,21 @@ fun Routing.pdf(pdfDataSource: PdfDataSource, publicationDataSource: Publication
                     .filter { pdf -> pdf.author == this }
                     .takeIf { it.count() != 0 }
                     ?.run {
-                        call.respond(this.toList())
+                        call.respond(this.toList().map { PdfResponse.from(it) })
                     } ?: call.respond(HttpStatusCode.NotFound)
             } ?: call.respond(HttpStatusCode.Forbidden)
         }
-    }
 
-    delete<Pdf> {
-        val pdfDeleteResult = pdfDataSource.deletePdf(it.id)
-        publicationDataSource.getAllPublications().forEach { publication ->
-            publicationDataSource.unlinkPdfWithPublication(it.id, publication.id)
-        }
-        if (pdfDeleteResult) {
-            call.respond(HttpStatusCode.OK)
-        } else {
-            call.respond(HttpStatusCode.NotFound)
+        delete<Pdf> {
+            val pdfDeleteResult = pdfDataSource.deletePdf(it.id)
+            publicationDataSource.getAllPublications().forEach { publication ->
+                publicationDataSource.unlinkPdfWithPublication(it.id, publication.id)
+            }
+            if (pdfDeleteResult) {
+                call.respond(HttpStatusCode.OK)
+            } else {
+                call.respond(HttpStatusCode.NotFound)
+            }
         }
     }
 }
