@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MLog</string>
+    <string name="title_activity_add_pub">AddPubActivity</string>
+    <string name="add_pub">Add Pub</string>
+    <string name="homepage">Homepage</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="add">Add</string>
+    <string name="delete">DELETE</string>
+    <string name="link_file">Link File</string>
+    <string name="unlink_file">Unlink File</string>
+    <string name="delete_publication">Delete pub</string>
+    <string name="linked_files">Linked Files</string>
+    <string name="file_name">File name</string>
+    <string name="your_files">Your Files</string>
+    <string name="your_publications">Your publications</string>
+    <string name="info">Klient do API, brakuje w nim możliwości dodawania i pobierania plików PDF (funkcjonalności z 2 kamienia milowego).
+        Logowanie zostalo celowo pominiete, bo requesty maja zawarty w sobie token jwt do autoryzacji, a uzytkownik jest tylko jeden</string>
+</resources>

@@ -1,5 +1,7 @@
 package com.jstarczewski.log.util
 
+import com.jstarczewski.log.auth.JwtConfig
+import com.jstarczewski.log.publication.api.Action
 import io.ktor.application.ApplicationCall
 import io.ktor.http.Headers
 import io.ktor.locations.locations
@@ -35,6 +37,23 @@ suspend fun InputStream.copyToSuspend(
         }
         return@withContext bytesCopied
     }
+}
+
+const val AUTHORIZATION = "Authorization"
+
+fun auth() = AUTHORIZATION
+
+fun token(login: String) = "Bearer ${JwtConfig.makeToken(login)}"
+
+const val def =
+    "http://0.0.0.0:8080"
+
+fun Action.applyBaseUrl() = apply {
+    href = def + this.href
+}
+
+fun <T : Any> T.assign(block: T.() -> Unit) {
+    this.block()
 }
 
 operator fun Headers.plus(other: Headers): Headers = when {

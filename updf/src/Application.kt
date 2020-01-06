@@ -31,6 +31,21 @@ data class Pdf(val id: Long)
 @Location("/pdf/all/{username}")
 data class UserPdf(val username: String)
 
+@Location("/pub")
+class Publications
+
+@Location("/pub/{id}")
+data class Publication(val id: Long)
+
+@Location("/pub/delete/{id}")
+data class PublicationDelete(val id: Long)
+
+@Location("/pub/{pubId}/link/{pdfId}")
+data class Link(val pubId: Long, val pdfId: Long)
+
+@Location("/pub/{pubId}/unlink/{pdfId}")
+data class Unlink(val pubId: Long, val pdfId: Long)
+
 const val CONFIG_PATH = "updf"
 const val REALM = "WEBOWECZKA"
 
@@ -39,8 +54,10 @@ const val REALM = "WEBOWECZKA"
 @Suppress("unused") // Referenced in application.conf
 fun Application.module() {
 
-    val uploadDir = Injection.provideUploadDir(environment.config.config(CONFIG_PATH))
-    val database = Injection.provideLocalDataSource(uploadDir)
+    val uploadDir = Injection.providePdfUploadDir(environment.config.config(CONFIG_PATH))
+    val publicationsDir = Injection.providePublicationUploadDir(environment.config.config(CONFIG_PATH))
+    val pdfDb = Injection.providePdfLocalDataSource(uploadDir)
+    val pubDb = Injection.providePublicationsLocalDataSource(publicationsDir)
 
     install(ContentNegotiation) {
         jackson {
@@ -65,8 +82,9 @@ fun Application.module() {
     }
 
     routing {
-        upload(database, uploadDir)
-        pdf(database)
+        upload(pdfDb, uploadDir)
+        pdf(pdfDb, pubDb)
+        publication(pdfDb, pubDb)
 
         get("/demo") {
             call.respondText("HELLO WORLD!")
