@@ -46,7 +46,7 @@ fun auth() = AUTHORIZATION
 fun token(login: String) = "Bearer ${JwtConfig.makeToken(login)}"
 
 const val def =
-    "http://updf:8080"
+    "http://0.0.0.0:8080"
 
 fun Action.applyBaseUrl() = apply {
     href = def + this.href
