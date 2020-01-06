@@ -32,7 +32,8 @@ fun Routing.linkPublication(db: UserDataSource, client: HttpClient, responseCach
                     }
                 }
             }
+        } ?: run {
+            call.redirect(UserPage(FILE_NOT_FOUND_ERROR))
         }
-        call.redirect(UserPage(FILE_NOT_FOUND_ERROR))
     }
 }

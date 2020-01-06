@@ -45,7 +45,8 @@ fun Routing.unlinkPublication(db: UserDataSource, client: HttpClient, responseCa
                     }
                 }
             }
+        } ?: run {
+            call.redirect(UserPage(FILE_NOT_FOUND_ERROR))
         }
-        call.redirect(UserPage(FILE_NOT_FOUND_ERROR))
     }
 }
