@@ -1,3 +1,8 @@
+Uruchomienie aplikacji cz4.
+1. Uruchamiamy tak jak w cz2.
+2. W pliku `/etc/hosts` by skojarzyc adres `127.0.0.1` z domena js.pamiw.com
+3. Uruchamiamy aplikacje i wpisujemy adres `js.pamiw.com:8081`
+
 Uruchomienie aplikacji cz3.  
 Klient Web
 1. Przechodzimy do katalogu `log/` i wykonujemy skrypt `./grdlew build`
