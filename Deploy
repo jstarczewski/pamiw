@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd log
+./gradlew build
+cd ..
+cd updf
+./gradlew build
+cd ..
+
+docker-compose build
+docker-compose up
