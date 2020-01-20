@@ -1,8 +1,8 @@
 package com.jstarczewski.log.routes
 
+import com.jstarczewski.log.db.UserDataSource
 import com.jstarczewski.log.Index
 import com.jstarczewski.log.LogSession
-import com.jstarczewski.log.db.UserDataSource
 import io.ktor.application.call
 import io.ktor.freemarker.FreeMarkerContent
 import io.ktor.locations.get
@@ -15,7 +15,7 @@ fun Routing.index(db: UserDataSource) {
 
     get<Index> {
         val user = call.sessions.get<LogSession>()?.let {
-            db.userById(it.userId)
+            db.userById(it.userId.toLong())
         }
         call.respond(FreeMarkerContent("index.ftl", "user" to user))
     }

@@ -1,9 +1,9 @@
 package com.jstarczewski.log.routes
 
+import com.jstarczewski.log.db.UserDataSource
 import com.jstarczewski.log.DeletePdf
 import com.jstarczewski.log.UserPage
 import com.jstarczewski.log.cache.ResponseCacheClearer
-import com.jstarczewski.log.db.UserDataSource
 import com.jstarczewski.log.helpers.withSession
 import com.jstarczewski.log.util.auth
 import com.jstarczewski.log.util.redirect

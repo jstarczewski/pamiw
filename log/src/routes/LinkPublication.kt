@@ -1,9 +1,9 @@
 package com.jstarczewski.log.routes
 
+import com.jstarczewski.log.db.UserDataSource
 import com.jstarczewski.log.LinkPublication
 import com.jstarczewski.log.UserPage
 import com.jstarczewski.log.cache.ResponseCache
-import com.jstarczewski.log.db.UserDataSource
 import com.jstarczewski.log.helpers.postWithToken
 import com.jstarczewski.log.helpers.withSession
 import com.jstarczewski.log.util.redirect

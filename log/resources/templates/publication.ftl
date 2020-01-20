@@ -4,6 +4,7 @@
 <#import "template.ftl" as layout />
 
 <@layout.mainLayout title="Add publication">
+    <script type="text/javascript" src="main.js"></script>
     <form class="pure-form-stacked" action="/user/upload/pub" method="post" enctype="multipart/form-data">
         <#if error??>
             <p class="error">${error}</p>
@@ -17,6 +18,6 @@
             <textarea name="description" cols="80" rows="20" id="description"></textarea>
         </label>
 
-        <input class="pure-button pure-button-primary" type="submit" value="Add">
+        <input class="pure-button pure-button-primary" type="submit" id="addPubBt" value="Add">
     </form>
 </@layout.mainLayout>

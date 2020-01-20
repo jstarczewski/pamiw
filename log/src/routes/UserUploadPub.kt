@@ -1,10 +1,12 @@
 package com.jstarczewski.log.routes
 
+import com.jstarczewski.log.LogSession
 import com.jstarczewski.log.UserPage
 import com.jstarczewski.log.UserUploadPub
 import com.jstarczewski.log.db.UserDataSource
 import com.jstarczewski.log.defaultPath
 import com.jstarczewski.log.helpers.withSession
+import com.jstarczewski.log.util.Notifier
 import com.jstarczewski.log.util.auth
 import com.jstarczewski.log.util.redirect
 import com.jstarczewski.log.util.token
@@ -22,6 +24,8 @@ import io.ktor.locations.post
 import io.ktor.request.receive
 import io.ktor.response.respond
 import io.ktor.routing.Routing
+import io.ktor.sessions.get
+import io.ktor.sessions.sessions
 
 private const val AUTHOR = "author"
 private const val TITLE = "title"
@@ -30,20 +34,20 @@ private const val PDF_IDS = "pdfIds"
 
 private const val EMPTY_ERROR = "Fields cannot be empty"
 
-fun Routing.userUploadPub(db: UserDataSource, client: io.ktor.client.HttpClient) {
+fun Routing.userUploadPub(db: UserDataSource, client: io.ktor.client.HttpClient, notifier: Notifier) {
 
     post<UserUploadPub> {
-        withSession(db) {
+        withSession(db) { user ->
             val post = call.receive<Parameters>()
-            val author = db.userById(it.userId)?.login
+            val author = db.userById(user.userId.toLong())?.login
             val title = post[TITLE]
             val description = post[DESCRIPTION]
             if (author?.isNotEmpty() == true
                 && title?.isNotEmpty() == true
                 && description?.isNotEmpty() == true
             ) {
-                client.submitForm {
-                    header(auth(), token(it.login))
+                client.submitForm<Unit> {
+                    header(auth(), token(user.login))
                     url("${defaultPath}pub")
                     body = MultiPartFormDataContent(
                         formData {
@@ -53,6 +57,10 @@ fun Routing.userUploadPub(db: UserDataSource, client: io.ktor.client.HttpClient)
                             append(PDF_IDS, "")
                         }
                     )
+                }.also {
+                    call.sessions.get<LogSession>()?.let {
+                        notifier.addNotification("New publication added")
+                    }
                     call.redirect(UserPage())
                 }
             } else {

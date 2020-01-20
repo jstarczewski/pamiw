@@ -1,23 +1,19 @@
 package com.jstarczewski.log.routes
 
-import com.jstarczewski.log.*
 import com.jstarczewski.log.db.UserDataSource
+import com.jstarczewski.log.Index
+import com.jstarczewski.log.LogSession
+import com.jstarczewski.log.Logout
 import com.jstarczewski.log.util.redirect
 import io.ktor.application.call
-import io.ktor.freemarker.FreeMarkerContent
-import io.ktor.http.Parameters
 import io.ktor.locations.get
-import io.ktor.locations.post
-import io.ktor.request.receive
-import io.ktor.response.respond
 import io.ktor.routing.Routing
 import io.ktor.sessions.clear
-import io.ktor.sessions.get
 import io.ktor.sessions.sessions
-import io.ktor.sessions.set
 
 fun Routing.login(db: UserDataSource) {
 
+    /*
     get<Login> {
         with(call) {
             sessions.get<LogSession>()?.let {
@@ -51,7 +47,8 @@ fun Routing.login(db: UserDataSource) {
             val error = Login("null")
             call.redirect(error.copy(error = "Invalid username or password"))
         }
-    }
+
+    }*/
 
     get<Logout> {
         call.sessions.clear<LogSession>()

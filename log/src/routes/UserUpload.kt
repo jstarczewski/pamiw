@@ -1,9 +1,9 @@
 package com.jstarczewski.log.routes
 
+import com.jstarczewski.log.db.UserDataSource
 import com.jstarczewski.log.Index
 import com.jstarczewski.log.UserPage
 import com.jstarczewski.log.UserUpload
-import com.jstarczewski.log.db.UserDataSource
 import com.jstarczewski.log.defaultPath
 import com.jstarczewski.log.helpers.withSession
 import com.jstarczewski.log.multipart.MultiPartContent

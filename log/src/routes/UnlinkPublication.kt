@@ -1,10 +1,10 @@
 package com.jstarczewski.log.routes
 
+import com.jstarczewski.log.db.UserDataSource
 import com.jstarczewski.log.LogSession
 import com.jstarczewski.log.UnlinkPublication
 import com.jstarczewski.log.UserPage
 import com.jstarczewski.log.cache.ResponseCache
-import com.jstarczewski.log.db.UserDataSource
 import com.jstarczewski.log.util.auth
 import com.jstarczewski.log.util.redirect
 import com.jstarczewski.log.util.token
@@ -25,7 +25,7 @@ private const val FILE_NOT_FOUND_ERROR = "File with given name does not exist"
 fun Routing.unlinkPublication(db: UserDataSource, client: HttpClient, responseCache: ResponseCache) {
 
     post<UnlinkPublication> {
-        val user = call.sessions.get<LogSession>()?.let { db.userById(it.userId) }
+        val user = call.sessions.get<LogSession>()?.let { db.userById(it.userId.toLong()) }
         val pubId = it.id
         val pdfs = responseCache.getPdfs()
         val publications = responseCache.getPubs()

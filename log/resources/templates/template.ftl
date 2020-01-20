@@ -5,7 +5,6 @@
     <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
         <title>${title} | PDFS</title>
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
@@ -15,7 +14,22 @@
     <div class="pure-g">
         <div class="sidebar pure-u-1 pure-u-md-1-4">
             <div class="header">
-                <div class="brand-title">PDFS</div>
+                <ul id="events">
+                </ul>
+                <script type="text/javascript">
+                    var source = new EventSource('/sse');
+                    var eventsUl = document.getElementById('events');
+
+                    function showEvent(text) {
+                        var li = document.createElement('li');
+                        li.innerText = text;
+                        eventsUl.appendChild(li);
+                    }
+
+                    source.addEventListener('message', function (e) {
+                        showEvent(e.data);
+                    }, false);
+                </script>
                 <nav class="nav">
                     <ul class="nav-list">
                         <#if user??>
@@ -84,23 +98,26 @@
             <#if error??>
                 <p class="error">${error}</p>
             </#if>
-            <form class="pure-form-stacked" action="/user/pub/link/${pub.id}" method="post"
-                  enctype="application/x-www-form-urlencoded">
-                <label for="fileName">Link file by name
-                    <input type="text" name="fileName" id="fileName">
-                </label>
-                <input class="pure-button pure-button-primary" type="submit" value="Link file">
-            </form>
-            <form class="pure-form-stacked" action="/user/pub/unlink/${pub.id}" method="post"
-                  enctype="application/x-www-form-urlencoded">
-                <label for="fileName">Unink file by name
-                    <input type="text" name="fileName" id="fileName">
-                </label>
-                <input class="pure-button pure-button-primary" type="submit" value="Unlink file">
-            </form>
-            <p>
-                <a class="pure-button pure-button-primary" href="user/pub/delete/${pub.id}">Delete</a>
-            </p>
+            <#if pub.author?? && user?? && pub.author == user.login>
+                <form class="pure-form-stacked" action="/user/pub/link/${pub.id}" method="post"
+                      enctype="application/x-www-form-urlencoded">
+                    <label for="fileName">Link file by name
+                        <input type="text" name="fileName" id="fileName">
+                    </label>
+                    <input class="pure-button pure-button-primary" type="submit" value="Link file">
+                </form>
+                <form class="pure-form-stacked" action="/user/pub/unlink/${pub.id}" method="post"
+                      enctype="application/x-www-form-urlencoded">
+                    <label for="fileName">Unink file by name
+                        <input type="text" name="fileName" id="fileName">
+                    </label>
+                    <input class="pure-button pure-button-primary" type="submit" value="Unlink file">
+                </form>
+                <p>
+                    <a class="pure-button pure-button-primary" href="user/pub/delete/${pub.id}">Delete</a>
+                </p>
+            <#else >
+            </#if>
         </header>
     </section>
 </#macro>
