@@ -64,7 +64,7 @@ fun File.getAllIds(extension: String = extensionType) =
         .mapTo(ArrayList()) { it.nameWithoutExtension.toLong() }
 
 const val def =
-    "http://0.0.0.0:8080"
+    "http://updf:8080"
 
 fun Action.applyBaseUrl() = apply {
     href = def + this.href

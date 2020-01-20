@@ -83,7 +83,7 @@ class UnlinkPublication(val id: Long)
 
 data class LogSession(val userId: String, val tag: String)
 
-const val defaultPath = "http://0.0.0.0:8080/"
+const val defaultPath = "http://updf:8080/"
 
 @KtorExperimentalAPI
 private val hashKey = hex("6819b57a326945c1968f45236589")
