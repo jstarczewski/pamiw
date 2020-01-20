@@ -1,5 +1,5 @@
 Uruchomienie aplikacji cz4.
-1. Uruchamiamy tak jak w cz2.
+1. Uruchamiamy tak jak w cz2. ewentualnie puszczamy `./Deploy`
 2. W pliku `/etc/hosts` by skojarzyc adres `127.0.0.1` z domena js.pamiw.com
 3. Uruchamiamy aplikacje i wpisujemy adres `js.pamiw.com:8081`
 
