@@ -1,3 +1,17 @@
+## PAMIW
+PAMIW is a simple project created to pass Web Applications Development course on Warsaw University of Technology. The general "use-case" for the whole project was to create two clients apps, that can manage "PDF related resources" shared via HTTP API application.
+
+## Code
+This was my first real Ktor project, so it is highly influenced by various [Ktor samples](https://github.com/ktorio/ktor-samples). The code is **not production ready, because I work full time and all features in the projects were written nearly the same day the deadline for each part was :(**. Though, it was a great experience to learn something new and whole Ktor framework is really insteresting. Project can be run in local or in **Docker** enviroment. 
+
+## Content
+PAMIW contains three small projects that work together.
+1. HTTP API app written in **Kotlin** with **Ktor** framework.
+2. HTTPI Client app written in **Kotlin** with **Ktor** framework.
+3. Android application written in **Kotlin**.
+
+## Polish description
+
 Uruchomienie aplikacji cz4.
 1. Uruchamiamy tak jak w cz2. ewentualnie puszczamy `./Deploy`
 2. W pliku `/etc/hosts` by skojarzyc adres `127.0.0.1` z domena js.pamiw.com
